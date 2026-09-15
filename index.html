@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Homem que Decide | Vencendo a Passividade e o Piloto Automático</title>
+  <meta name="description" content="Uma reflexão profunda para homens sobre liderança, responsabilidade, a omissão de Isaque e o exemplo supremo de Jesus Cristo." />
+  
+  <!-- Open Graph / Meta tags -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="O Homem que Decide: Vencendo a Passividade e o Piloto Automático" />
+  <meta property="og:description" content="Não decidir já é uma decisão. Descubra como romper o piloto automático e liderar com intenção e propósito." />
+  <meta property="og:image" content="Isaque.jpg" />
+  <meta name="author" content="Roque Filho" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div id="reading-progress-container" class="reading-progress-container" aria-hidden="true">
+    <div id="reading-progress-bar" class="reading-progress-bar"></div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <div class="header-brand">
+        <span class="brand-badge"><i class="fa-solid fa-compass"></i></span>
+        <span class="brand-title">O Homem Que Decide</span>
+      </div>
+
+      <div class="header-actions">
+        <div class="header-tools-group">
+          <div class="font-resizer" title="Ajustar tamanho da fonte">
+            <button id="font-dec" class="tool-btn" aria-label="Diminuir fonte">A-</button>
+            <button id="font-inc" class="tool-btn" aria-label="Aumentar fonte">A+</button>
+          </div>
+
+          <button id="theme-toggle" class="tool-btn theme-toggle-btn" title="Alternar entre tema Claro e Escuro" aria-label="Alternar tema">
+            <i class="fa-solid fa-sun" id="theme-icon"></i>
+          </button>
+        </div>
+        
+        <button id="btn-audio-read" class="action-pill" title="Ouvir reflexão narrada">
+          <i class="fa-solid fa-headphones"></i>
+          <span class="btn-text">Ouvir Reflexão</span>
+        </button>
+
+        <button id="btn-share-top" class="action-pill secondary" title="Compartilhar no WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span class="btn-text">Enviar a um Irmão</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Native Audio Element -->
+  <audio id="main-audio" src="audio.ogg" preload="metadata"></audio>
+
+  <!-- Audio Player Bar (Floating Top Bar when playing or scrolling) -->
+  <div id="audio-player-panel" class="audio-player-panel hidden">
+    <div class="container audio-player-inner">
+      <div class="audio-status">
+        <span class="pulse-indicator"></span>
+        <span id="audio-label">Ouvindo: <strong>O Homem que Decide (Áudio Original)</strong></span>
+      </div>
+      <div class="audio-mini-controls">
+        <span id="audio-mini-time" class="audio-time-label">0:00 / 0:00</span>
+        <button id="audio-mini-play" class="audio-ctrl-btn" aria-label="Play/Pause"><i class="fa-solid fa-play"></i></button>
+        <button id="audio-mini-speed" class="audio-speed-btn" title="Velocidade de reprodução">1x</button>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+      <div class="container hero-container">
+        
+        <div class="hero-badge-wrap">
+          <span class="editorial-tag">
+            <i class="fa-solid fa-fire-flame-curved"></i> Reflexão & Chamado para Homens
+          </span>
+          <span class="author-byline">
+            <i class="fa-solid fa-pen-fancy"></i> por <strong>Roque Filho</strong> • Setembro/2026
+          </span>
+          <span class="read-time"><i class="fa-regular fa-clock"></i> 4 min de leitura</span>
+        </div>
+
+        <h1 class="hero-title">
+          O Homem que <span class="gold-gradient-text">Decide</span>
+        </h1>
+        <p class="hero-subtitle">
+          Vencendo a Passividade, o Piloto Automático e o Peso da Omissão
+        </p>
+
+        <!-- Dedicated Modern Audio Player Card -->
+        <div class="audio-hero-card glass-panel" id="hero-audio-player">
+          <div class="audio-hero-visual">
+            <button id="audio-main-play-btn" class="audio-main-play-circle" aria-label="Reproduzir Áudio da Mensagem">
+              <i class="fa-solid fa-play" id="main-play-icon"></i>
+            </button>
+            <div class="audio-waveform-bars" id="waveform-animation">
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+            </div>
+          </div>
+
+          <div class="audio-hero-content">
+            <div class="audio-track-info">
+              <span class="audio-badge"><i class="fa-solid fa-microphone-lines"></i> Áudio da Mensagem</span>
+              <h3 class="audio-track-title">Ouça a Reflexão Completa</h3>
+              <p class="audio-track-desc">Dê o play e ouça a mensagem enquanto acompanha a leitura dos pontos e da imagem abaixo.</p>
+            </div>
+
+            <!-- Timeline & Controls -->
+            <div class="audio-timeline-wrap">
+              <span id="audio-current-time" class="audio-time">0:00</span>
+              <input type="range" id="audio-seek-bar" class="audio-seek-bar" value="0" min="0" max="100" step="0.1" aria-label="Progresso do áudio" />
+              <span id="audio-duration-time" class="audio-time">--:--</span>
+            </div>
+
+            <div class="audio-extra-controls">
+              <div class="speed-control-wrap">
+                <span class="ctrl-label">Velocidade:</span>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+                <button class="speed-btn" data-speed="2">2x</button>
+              </div>
+
+              <div class="volume-control-wrap">
+                <button id="btn-volume-mute" class="volume-btn" aria-label="Silenciar"><i class="fa-solid fa-volume-high" id="volume-icon"></i></button>
+                <input type="range" id="audio-volume-bar" class="audio-volume-bar" value="1" min="0" max="1" step="0.05" aria-label="Volume do áudio" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message intro banner -->
+        <div class="intro-alert-card glass-panel">
+          <div class="intro-alert-icon">
+            <i class="fa-solid fa-quote-left"></i>
+          </div>
+          <div class="intro-alert-text">
+            <p><strong>Olá, homens! Bom dia.</strong> Hoje não teremos nosso encontro presencial, mas vocês não ficarão sem reflexão e oração. Que estas verdades afiem seu espírito para a liderança e a intencionalidade.</p>
+          </div>
+        </div>
+
+        <!-- Featured Visual Canvas with Interactive Hotspots -->
+        <div class="interactive-artwork-card glass-panel">
+          <div class="artwork-header">
+            <div class="artwork-info">
+              <span class="artwork-tag"><i class="fa-solid fa-palette"></i> A Encruzilhada da Decisão</span>
+              <p class="artwork-sub">Explore os detalhes da pintura: passe o mouse ou toque nos pontos luminosos</p>
+            </div>
+            <button id="btn-fullscreen-img" class="btn-ghost" title="Ampliar imagem">
+              <i class="fa-solid fa-expand"></i> Ampliar Obra
+            </button>
+          </div>
+
+          <div class="artwork-viewport" id="artwork-container">
+            <img 
+              src="Isaque.jpg" 
+              alt="O Homem na Encruzilhada: A Omissão vs A Decisão de Seguir a Luz" 
+              class="artwork-img"
+              id="main-art-img"
+              loading="eager"
+            />
+            
+            <!-- Hotspot 1: Placa / Encruzilhada -->
+            <button class="hotspot" style="top: 18%; left: 63%;" data-title="A Encruzilhada da Vida" data-desc="Na encruzilhada, a inércia não nos mantém no mesmo lugar. Não decidir já é uma decisão definitiva que entrega o desfecho ao acaso." aria-label="Ponto 1: A Encruzilhada">
+              <span class="hotspot-pulse"></span>
+              <span class="hotspot-icon">1</span>
+            </button>
+
+            <!-- Hotspot 2: Lanterna e Caminho Iluminado -->
+            <button class="hotspot active-gold" style="top: 31%; left: 71%;" data-title="A Luz da Intencionalidade" data-desc="A lâmpada que guia o homem consciente. O caminho que conduz à segurança do lar, à família abençoada e aos passos de Cristo." aria-label="Ponto 2: A Luz da Intencionalidade">
+              <span class="hotspot-pulse"></span>
+              <span class="hotspot-icon">2</span>
+            </button>
+
+            <!-- Hotspot 3: O Cajado do Pastor -->
+            <button class="hotspot" style="top: 56%; left: 52%;" data-title="O Cajado da Responsabilidade" data-desc="Empunhar o cajado significa assumir o papel de protetor e líder. Não para dominar, mas para guardar e dar a vida como o Bom Pastor." aria-label="Ponto 3: O Cajado da Responsabilidade">
+              <span class="hotspot-pulse"></span>
+              <span class="hotspot-icon">3</span>
+            </button>
+
+            <!-- Hotspot 4: Caminho Sombrio / Relógio / Moedas -->
+            <button class="hotspot warning" style="top: 48%; left: 16%;" data-title="O Rastro da Omissão" data-desc="O tempo que escorre (relógio), as perdas materiais e o desespero na sombra. Quando o homem não lidera, a rua invade o lar e a família se fragmenta." aria-label="Ponto 4: O Rastro da Omissão">
+              <span class="hotspot-pulse"></span>
+              <span class="hotspot-icon">4</span>
+            </button>
+
+            <!-- Hotspot 5: A Palavra Revelada / Família -->
+            <button class="hotspot active-gold" style="top: 66%; left: 93%;" data-title="A Palavra e a Promessa" data-desc="A Bíblia aberta irradia luz: o refúgio seguro onde as gerações encontram firmeza, quebrando maldições e padrões herdados." aria-label="Ponto 5: A Palavra">
+              <span class="hotspot-pulse"></span>
+              <span class="hotspot-icon">5</span>
+            </button>
+          </div>
+
+          <!-- Hotspot description box -->
+          <div id="hotspot-card" class="hotspot-details-panel">
+            <div class="hotspot-details-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <div class="hotspot-details-content">
+              <h4 id="hotspot-title">A Encruzilhada da Vida</h4>
+              <p id="hotspot-desc">Na encruzilhada, a inércia não nos mantém no mesmo lugar. Não decidir já é uma decisão definitiva que entrega o desfecho ao acaso.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Key Principle Highlight Banner -->
+    <section class="principle-section">
+      <div class="container">
+        <div class="key-principle-box">
+          <div class="principle-watermark">DECISÃO</div>
+          <div class="principle-content">
+            <span class="principle-kicker">Princípio Central</span>
+            <h2 class="principle-quote">
+              "Não decidir já é uma decisão. Quando nos omitimos diante de um assunto, a falta de escolha define o desfecho por nós."
+            </h2>
+            <div class="principle-footer">
+              <div class="author-tag">
+                <i class="fa-solid fa-shield-halved"></i> Alinhamento Espiritual Masculino
+              </div>
+              <button class="btn-copy-quote" data-quote="Não decidir já é uma decisão. Quando nos omitimos diante de um assunto, a falta de escolha define o desfecho por nós.">
+                <i class="fa-regular fa-copy"></i> Copiar Frase
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep Dive Content Section -->
+    <section class="reading-section">
+      <div class="container read-layout">
+        
+        <!-- Main Text Column -->
+        <article class="reading-article" id="study-content">
+
+          <!-- Section: The Premise -->
+          <div class="content-block">
+            <p class="lead-paragraph">
+              Na semana passada, falamos sobre Isaque e o perigo de viver no <strong>"piloto automático"</strong>. Hoje, vamos refletir sobre <em>Isaque: o homem que não decide</em>. Afinal, não decidir já é uma decisão. Quando nos omitimos diante de um assunto, a falta de escolha define o desfecho por nós.
+            </p>
+            
+            <p>
+              Isaque viveu no piloto automático; ele simplesmente não decidiu. Não escolheu sua esposa (seguindo apenas a tradição cultural da época), não assumiu uma postura intencional de liderança, não definiu como educar seus filhos e o resultado foi uma família fraturada. O homem que Deus procura não é aquele que se deixa levar passivamente pelos acontecimentos, mas aquele que toma decisões — a exemplo de Jesus, o homem por excelência que decide e assume a responsabilidade.
+            </p>
+
+            <div class="quote-callout danger-theme">
+              <div class="callout-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div class="callout-body">
+                <p class="callout-text">
+                  "Quando o homem se omite, ele abre as portas do lar para a influência do mundo exterior; e quando a rua entra, a família se rompe."
+                </p>
+                <span class="callout-author">O Retrato da Inércia</span>
+              </div>
+            </div>
+
+            <p>
+              Isaque é o retrato disso. A trajetória dele é, em certo sentido, ainda mais impactante do que a de alguém que cometeu erros deliberados por impulsividade: <strong>é a história de um homem que quase nada fez e, exatamente pela inércia, viu a própria família se desestruturar.</strong>
+            </p>
+          </div>
+
+          <!-- Section 1 -->
+          <div class="content-block study-chapter" id="capitulo-1">
+            <div class="chapter-number">01</div>
+            <h2 class="chapter-title">A Passividade na Escolha e na Proteção</h2>
+            
+            <p>
+              Isaque começa sendo passivo em seu casamento. Em <span class="bible-ref" data-verse="Gênesis 24">Gênesis 24</span>, Abraão encarrega seu servo de encontrar uma esposa para seu filho na terra natal. O servo ora, encontra Rebeca e a traz.
+            </p>
+
+            <div class="scripture-card">
+              <div class="scripture-header">
+                <span class="scripture-ref"><i class="fa-solid fa-book-bible"></i> Gênesis 24:63</span>
+                <button class="btn-share-verse" data-verse="Gênesis 24:63" title="Copiar versículo"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <p class="scripture-body">
+                "Isaque havia saído para meditar no campo ao cair da tarde quando, ao erguer os olhos, avistou os camelos que chegavam."
+              </p>
+            </div>
+
+            <p>
+              Ele estava apenas contemplando a vida, alheio e despreocupado — uma imagem semelhante a quem hoje se perde maratonando séries, rolando feeds de redes sociais e assistindo passivamente o tempo correr. Quando Rebeca chega, ele apenas a aceita: não questiona, não corteja, não decide.
+            </p>
+
+            <div class="modern-parallel-card">
+              <div class="parallel-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+              <div class="parallel-text">
+                <h4>O Paralelo Moderno: O Escapismo das Telas</h4>
+                <p>Contemplar o horizonte sem agir equivale hoje a rolar feeds infinitos enquanto a vida real e as demandas do casamento exigem posicionamento e presença genuína.</p>
+              </div>
+            </div>
+
+            <p>
+              Mais tarde, em Gerar, Isaque repete rigorosamente o mesmo erro de Abraão: tomado pelo medo de morrer, diz que Rebeca é sua irmã. Trata-se da mesma mentira, no mesmo lugar, motivada pelo mesmo temor. <strong>Ele não se levanta para proteger sua esposa; antes, omite-se e a expõe ao perigo.</strong>
+            </p>
+          </div>
+
+          <!-- Section 2 -->
+          <div class="content-block study-chapter" id="capitulo-2">
+            <div class="chapter-number">02</div>
+            <h2 class="chapter-title">O Favoritismo e a Divisão dos Filhos</h2>
+            
+            <p>
+              A mesma inércia se manifesta na criação dos filhos (<span class="bible-ref" data-verse="Gênesis 25:27-28">Gênesis 25:27-28</span>). Conforme os meninos cresciam, Esaú tornou-se caçador e homem do campo, enquanto Jacó era pacato e habitava em tendas.
+            </p>
+
+            <div class="split-comparison-grid">
+              <div class="split-card isaac-side">
+                <div class="split-badge"><i class="fa-solid fa-drumstick-bite"></i> Isaque & Esaú</div>
+                <h4>Afeição por Apetite</h4>
+                <p>Isaque preferia Esaú porque apreciava a carne de caça — buscando satisfazer o próprio apetite e comodismo.</p>
+              </div>
+              <div class="split-card rebecca-side">
+                <div class="split-badge"><i class="fa-solid fa-tent"></i> Rebeca & Jacó</div>
+                <h4>Afeição por Proximidade</h4>
+                <p>Rebeca apegava-se a Jacó por sua proximidade na tenda, gerando alianças secretas dentro da própria casa.</p>
+              </div>
+            </div>
+
+            <p class="impact-text">
+              Em vez de cultivar a unidade no lar, os pais dividiram suas afeições. Cada um elegeu um favorito, plantando as sementes da rivalidade que marcaria gerações inteiras.
+            </p>
+          </div>
+
+          <!-- Section 3 -->
+          <div class="content-block study-chapter" id="capitulo-3">
+            <div class="chapter-number">03</div>
+            <h2 class="chapter-title">Jesus: O Contraste e o Nosso Modelo</h2>
+            
+            <p>
+              Em contrapartida, Jesus é a nossa verdadeira referência de homem, marido e protetor. Ele não foge da responsabilidade:
+            </p>
+
+            <div class="scripture-card gold-theme">
+              <div class="scripture-header">
+                <span class="scripture-ref"><i class="fa-solid fa-cross"></i> João 10:11</span>
+                <button class="btn-share-verse" data-verse="João 10:11" title="Copiar versículo"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <p class="scripture-body">
+                "Eu sou o bom pastor; o bom pastor dá a vida pelas ovelhas."
+              </p>
+            </div>
+
+            <p>
+              Enquanto a omissão de Isaque dispersou seus filhos, Cristo reúne os que estavam dispersos. Jesus não entrega Sua noiva ao perigo; <strong>Ele Se entrega por ela, amando a Igreja com sacrifício intencional (Efésios 5:25)</strong>. Esse é o chamado para cada marido: dar a vida por sua esposa, protegendo-a com firmeza e devoção.
+            </p>
+
+            <p>
+              Em João 10:11-15, Jesus reforça que o mercenário abandona o rebanho ao ver o perigo porque não tem compromisso genuíno, mas o verdadeiro pastor conhece suas ovelhas e está disposto a dar a vida por elas voluntariamente:
+            </p>
+
+            <div class="scripture-card gold-theme">
+              <div class="scripture-header">
+                <span class="scripture-ref"><i class="fa-solid fa-crown"></i> João 10:18</span>
+                <button class="btn-share-verse" data-verse="João 10:18" title="Copiar versículo"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <p class="scripture-body">
+                "Ninguém a tira de mim, mas eu a dou por minha espontânea vontade."
+              </p>
+            </div>
+
+            <p>
+              Cristo Se ofereceu para nos remir de toda a iniquidade e formar um povo dedicado às boas obras (<em>Tito 2:14</em>).
+            </p>
+          </div>
+
+          <!-- Section: Comparison Matrix (Isaque vs Jesus) -->
+          <div class="content-block">
+            <h3 class="subsection-title"><i class="fa-solid fa-scale-balanced"></i> O Grande Contraste da Liderança</h3>
+            
+            <div class="comparison-table-wrapper">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Área da Vida</th>
+                    <th class="col-isaque"><i class="fa-solid fa-user-xmark"></i> O Padrão de Isaque (Inércia)</th>
+                    <th class="col-jesus"><i class="fa-solid fa-shield-heart"></i> O Padrão de Cristo (Intencionalidade)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Decisão no Matrimônio</strong></td>
+                    <td>Recebeu passivamente; não cortejou nem escolheu com intenção.</td>
+                    <td>Escolheu ativamente Sua Noiva e a conquistou com amor sacrificial.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Proteção da Esposa</strong></td>
+                    <td>Omitiu-se diante do medo e expôs Rebeca ao perigo em Gerar.</td>
+                    <td>Entregou-se voluntariamente para proteger e purificar Sua Noiva.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Gestão do Lar</strong></td>
+                    <td>Favoritismo gerou divisão, intrigas e ruptura entre os filhos.</td>
+                    <td>Reúne os dispersos em perfeita unidade, graça e verdade.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Postura Diante do Chamado</strong></td>
+                    <td>Piloto automático, contemplação estática e comodismo.</td>
+                    <td>Ação resoluta: "Eu dou a minha vida por Minha própria vontade."</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section: The Myth of Endymion & Isaac -->
+          <div class="content-block myth-highlight-box">
+            <div class="myth-header">
+              <span class="myth-icon"><i class="fa-solid fa-monument"></i></span>
+              <div>
+                <h3>A Ilusão da Bela Inércia</h3>
+                <span class="myth-subtitle">Endimião vs Isaque vs O Homem de Deus</span>
+              </div>
+            </div>
+            <p>
+              A mitologia grega celebrou <strong>Endimião</strong>, o jovem eternamente adormecido, belo e inerte. Na Bíblia, vemos <strong>Isaque</strong>, meditativo porém estático. 
+            </p>
+            <p class="myth-punchline">
+              <i class="fa-solid fa-ban"></i> Mas a inércia não é virtude nem serenidade — <strong>é tragédia</strong>. O modelo que Deus estabeleceu não é a passividade; é a postura resoluta de Cristo.
+            </p>
+          </div>
+
+          <!-- Section: Conclusion & Call to Arms -->
+          <div class="content-block conclusion-block" id="conclusao">
+            <div class="conclusion-badge">CHAMADO FINAL</div>
+            <h2 class="conclusion-title">Quebrando o Ciclo para as Próximas Gerações</h2>
+            
+            <p>
+              Se nós, como homens, abandonarmos o piloto automático, <strong>a próxima geração não herdará o peso das nossas omissões</strong>. Os padrões que enfraqueceram a casa de Isaque — a passividade paterna, a falta de diálogo, o favoritismo e as mentiras herdadas — não precisam ser a nossa história.
+            </p>
+
+            <div class="callout-card-strong">
+              <p class="lead-callout">
+                Para isso, é preciso decidir. Não basta contemplar o campo enquanto a vida acontece; não podemos nos alienar no escapismo das telas e do comodismo.
+              </p>
+            </div>
+
+            <p>
+              Ele escolheu Sua noiva, quebrou os padrões e deu a própria vida. E hoje Ele nos chama a tomar uma posição:
+            </p>
+
+            <!-- Big Final Question -->
+            <div class="final-decision-prompt">
+              <div class="prompt-glow"></div>
+              <h3>A Pergunta que Ecoa Hoje:</h3>
+              <p class="prompt-text">
+                "Seremos homens que se escondem na inércia ou assumiremos, em Cristo, a missão de liderar, proteger e edificar nossos lares?"
+              </p>
+            </div>
+
+            <div class="blessing-box">
+              <p class="blessing-text">
+                <i class="fa-solid fa-dove"></i> Que Deus abençoe a todos. Tenham um excelente dia de vitória e alinhamento!
+              </p>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sticky Sidebar for Quick Navigation and Action Checklist -->
+        <aside class="study-sidebar">
+          
+          <!-- Summary Card -->
+          <div class="sidebar-card glass-panel sticky-card">
+            <h3 class="sidebar-title"><i class="fa-solid fa-list-check"></i> Roteiro da Mensagem</h3>
+            <ul class="nav-topics">
+              <li><a href="#capitulo-1" class="sidebar-link"><span class="nav-idx">01</span> Passividade & Proteção</a></li>
+              <li><a href="#capitulo-2" class="sidebar-link"><span class="nav-idx">02</span> Favoritismo & Divisão</a></li>
+              <li><a href="#capitulo-3" class="sidebar-link"><span class="nav-idx">03</span> Jesus: Nosso Modelo</a></li>
+              <li><a href="#conclusao" class="sidebar-link"><span class="nav-idx">04</span> Chamado & Decisão</a></li>
+            </ul>
+
+            <hr class="sidebar-divider" />
+
+            <!-- Action Checklist for Men -->
+            <h4 class="checklist-title"><i class="fa-solid fa-compass-drafting"></i> Meu Compromisso Hoje</h4>
+            <div class="decision-checklist">
+              <label class="check-item">
+                <input type="checkbox" id="chk-1" />
+                <span class="custom-chk"></span>
+                <span class="chk-label">Desligar o piloto automático nas decisões do meu lar.</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" id="chk-2" />
+                <span class="custom-chk"></span>
+                <span class="chk-label">Proteger ativamente minha esposa e filhos contra perigos físicos e espirituais.</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" id="chk-3" />
+                <span class="custom-chk"></span>
+                <span class="chk-label">Trocar o escapismo das telas pela presença ativa em casa.</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" id="chk-4" />
+                <span class="custom-chk"></span>
+                <span class="chk-label">Imitar a Cristo: liderar com amor, sacrifício e verdade.</span>
+              </label>
+            </div>
+
+            <div id="checklist-feedback" class="checklist-status hidden">
+              <i class="fa-solid fa-circle-check"></i> Você assumiu seus 4 compromissos de liderança!
+            </div>
+
+            <hr class="sidebar-divider" />
+
+            <!-- Share Block in Sidebar -->
+            <div class="sidebar-share-cta">
+              <p class="share-tagline">Edifique outro homem com esta mensagem:</p>
+              <button id="btn-share-sidebar" class="btn-whatsapp-full">
+                <i class="fa-brands fa-whatsapp"></i> Compartilhar no WhatsApp
+              </button>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- Interactive Prayer / Dedication Banner -->
+    <section class="prayer-section">
+      <div class="container">
+        <div class="prayer-card glass-panel">
+          <div class="prayer-header">
+            <span class="prayer-badge"><i class="fa-solid fa-hands-praying"></i> Momento de Alinhamento</span>
+            <h2>Oração do Homem que Assume a Responsabilidade</h2>
+          </div>
+          <div class="prayer-body">
+            <p>
+              <em>"Senhor Deus, renuncio a toda passividade, medo e omissão herdados ou cultivados em minha história. Não serei um homem paralisado no campo das telas e do comodismo enquanto minha família precisa de direção. Dá-me a coragem, o sacrifício e a firmeza de Cristo para amar, proteger e edificar o meu lar todos os dias. Em nome de Jesus, amém!"</em>
+            </p>
+          </div>
+          <div class="prayer-actions">
+            <button id="btn-amen" class="btn-amen-gold">
+              <i class="fa-solid fa-heart"></i> Dizer Amém & Gravar Decisão
+            </button>
+            <span id="amen-counter-display" class="amen-count-text">
+              <i class="fa-solid fa-users"></i> <strong id="amen-count">47</strong> homens já confirmaram esta decisão hoje
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Image Modal / Zoom View -->
+  <div id="image-modal" class="modal-backdrop hidden" aria-hidden="true">
+    <div class="modal-dialog">
+      <button id="btn-close-modal" class="modal-close-btn" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-image-wrapper">
+        <img src="Isaque.jpg" alt="Obra de arte ampliada: O Homem que Decide" class="modal-img" />
+      </div>
+      <div class="modal-caption">
+        <h3>A Escolha Entre Dois Caminhos</h3>
+        <p>A lanterna da verdade aponta para a luz da intencionalidade. O cajado aguarda o homem que decide se levantar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div id="toast" class="toast-notification hidden" role="alert">
+    <i class="fa-solid fa-check-circle" id="toast-icon"></i>
+    <span id="toast-msg">Mensagem copiada com sucesso!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <i class="fa-solid fa-shield-halved gold-icon"></i>
+        <span>O Homem que Decide • Encontro de Homens</span>
+      </div>
+      <p class="footer-author">
+        Mensagem ministrada por <strong>Roque Filho</strong> • Setembro/2026
+      </p>
+      <p class="footer-copy">
+        "Ninguém a tira de mim, mas eu a dou por minha espontânea vontade." (João 10:18)
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
