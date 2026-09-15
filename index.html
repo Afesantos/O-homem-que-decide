@@ -57,8 +57,12 @@
     </div>
   </header>
 
-  <!-- Native Audio Element -->
-  <audio id="main-audio" src="audio.ogg" preload="metadata"></audio>
+  <!-- Native Audio Element (Suporte automático para OGG e MP3 em caso de incompatibilidade) -->
+  <audio id="main-audio" preload="metadata">
+    <source src="audio.ogg" type="audio/ogg">
+    <source src="audio.mp3" type="audio/mpeg">
+    Seu navegador não suporta reprodução de áudio nativa.
+  </audio>
 
   <!-- Audio Player Bar (Floating Top Bar when playing or scrolling) -->
   <div id="audio-player-panel" class="audio-player-panel hidden">

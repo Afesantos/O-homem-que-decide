@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 10. Native Audio Playback Engine (audio.ogg)
+  // 10. Native Audio Playback Engine (Automatic OGG / MP3 Fallback Engine)
   const audio = document.getElementById('main-audio');
   const heroAudioPlayer = document.getElementById('hero-audio-player');
   const mainPlayBtn = document.getElementById('audio-main-play-btn');
@@ -277,6 +277,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const volumeMuteBtn = document.getElementById('btn-volume-mute');
   const volumeIcon = document.getElementById('volume-icon');
 
+  // Auto-verification: Check OGG compatibility and auto-switch to MP3 if necessary
+  function initAudioFormatFallback() {
+    if (!audio) return;
+
+    const canPlayOgg = audio.canPlayType && (
+      audio.canPlayType('audio/ogg; codecs="opus"').replace(/^no$/, '') ||
+      audio.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, '') ||
+      audio.canPlayType('audio/ogg').replace(/^no$/, '')
+    );
+
+    // If device/browser does not support OGG (e.g. iOS Safari / WebKit), automatically switch to MP3
+    if (!canPlayOgg) {
+      console.info('Compatibilidade de áudio: Dispositivo não suporta OGG. Alternando automaticamente para áudio MP3.');
+      audio.src = 'audio.mp3';
+      audio.load();
+    }
+
+    // Auto-recovery fallback if any error occurs loading OGG source
+    audio.addEventListener('error', () => {
+      const currentSrc = audio.currentSrc || audio.src || '';
+      if (currentSrc.includes('.ogg')) {
+        console.warn('Incompatibilidade ou falha no áudio OGG detectada. Ativando fallback automático para MP3.');
+        audio.src = 'audio.mp3';
+        audio.load();
+      }
+    }, true);
+  }
+
+  initAudioFormatFallback();
+
   function formatTime(seconds) {
     if (isNaN(seconds) || seconds < 0) return '0:00';
     const mins = Math.floor(seconds / 60);
@@ -287,12 +317,27 @@ document.addEventListener('DOMContentLoaded', () => {
   function toggleAudioPlayback() {
     if (!audio) return;
     if (audio.paused) {
-      audio.play().then(() => {
-        updatePlayState(true);
-      }).catch(err => {
-        console.warn('Playback error:', err);
-        showToast('Clique para iniciar a reprodução do áudio.', 'fa-solid fa-circle-play');
-      });
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          updatePlayState(true);
+        }).catch(err => {
+          console.warn('Tentativa de reprodução:', err);
+          const currentSrc = audio.currentSrc || audio.src || '';
+          if (currentSrc.includes('.ogg')) {
+            console.info('Tentando reproduzir com áudio MP3 alternativo...');
+            audio.src = 'audio.mp3';
+            audio.load();
+            audio.play().then(() => {
+              updatePlayState(true);
+            }).catch(() => {
+              showToast('Clique para iniciar a reprodução do áudio.', 'fa-solid fa-circle-play');
+            });
+          } else {
+            showToast('Clique para iniciar a reprodução do áudio.', 'fa-solid fa-circle-play');
+          }
+        });
+      }
     } else {
       audio.pause();
       updatePlayState(false);
