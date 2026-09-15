@@ -1,5 +1,6 @@
 /* ==========================================================================
    O HOMEM QUE DECIDE - MASTER RESPONSIVE STYLESHEET
+   Refined for Ultra-Clean Design & Zero Mobile Overflow
    ========================================================================== */
 
 :root {
@@ -7,7 +8,7 @@
   --bg-core: #090c13;
   --bg-surface: #0f1420;
   --bg-surface-elevated: #161e30;
-  --bg-surface-glass: rgba(22, 30, 48, 0.85);
+  --bg-surface-glass: rgba(22, 30, 48, 0.88);
   --bg-glass-border: rgba(245, 158, 11, 0.25);
   
   --gold-primary: #f59e0b;
@@ -29,10 +30,10 @@
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --base-font-size: 1.0625rem;
-  --max-width-site: 1180px;
+  --max-width-site: 1140px;
   --radius-sm: 8px;
   --radius-md: 14px;
-  --radius-lg: 22px;
+  --radius-lg: 20px;
   --radius-full: 9999px;
 
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -44,7 +45,7 @@
   --bg-core: #fbf9f5;
   --bg-surface: #ffffff;
   --bg-surface-elevated: #f4ede2;
-  --bg-surface-glass: rgba(255, 255, 255, 0.94);
+  --bg-surface-glass: rgba(255, 255, 255, 0.95);
   --bg-glass-border: rgba(180, 83, 9, 0.25);
   
   --gold-primary: #d97706;
@@ -62,7 +63,7 @@
   --accent-success-bg: rgba(5, 150, 105, 0.12);
 }
 
-/* Base Reset & Anti-Overflow Guarantee */
+/* Base Reset & Zero-Overflow Guarantee */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -106,22 +107,26 @@ body {
   background-attachment: fixed;
 }
 
-/* Typography */
-h1, h2, h3, h4 {
+/* Typography & Word Break Protection */
+h1, h2, h3, h4, h5, h6 {
   color: var(--text-main);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.015em;
-  word-wrap: break-word;
   overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+p, span, a, label, strong, em, li, blockquote {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 p {
   margin-bottom: 1.45rem;
   color: var(--text-soft);
   font-size: 1.05rem;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 strong {
@@ -151,6 +156,7 @@ a:hover {
   margin-right: auto;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  box-sizing: border-box;
 }
 
 /* Reading Progress Indicator */
@@ -210,6 +216,7 @@ a:hover {
   border-bottom: 1px solid var(--bg-glass-border);
   transition: all var(--transition-fast);
   width: 100%;
+  box-sizing: border-box;
 }
 
 .header-inner {
@@ -217,6 +224,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
+  width: 100%;
 }
 
 .header-brand {
@@ -562,6 +570,8 @@ a:hover {
   margin: 0 auto 2.25rem;
   border-color: var(--bg-glass-border);
   background: var(--bg-surface-glass);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .audio-hero-visual {
@@ -793,6 +803,8 @@ a:hover {
   background: var(--bg-surface-elevated);
   border-left: 4px solid var(--gold-light);
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .intro-alert-icon {
@@ -816,6 +828,8 @@ a:hover {
   margin: 0 auto;
   overflow: hidden;
   max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .artwork-header {
@@ -952,6 +966,8 @@ a:hover {
   text-align: left;
   transition: all var(--transition-fast);
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hotspot-details-icon {
@@ -990,7 +1006,9 @@ a:hover {
   padding: 3rem 2.5rem;
   overflow: hidden;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+  width: 100%;
   max-width: 100%;
+  box-sizing: border-box;
 }
 
 .principle-watermark {
@@ -1022,7 +1040,7 @@ a:hover {
 
 .principle-quote {
   font-family: var(--font-serif-body);
-  font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+  font-size: clamp(1.35rem, 3.2vw, 2.1rem);
   font-weight: 600;
   font-style: italic;
   line-height: 1.4;
@@ -1038,6 +1056,7 @@ a:hover {
   gap: 1rem;
   border-top: 1px solid var(--bg-glass-border);
   padding-top: 1.25rem;
+  width: 100%;
 }
 
 .author-tag {
@@ -1076,6 +1095,7 @@ a:hover {
 .reading-section {
   padding: 3rem 0 5rem;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .read-layout {
@@ -1083,16 +1103,24 @@ a:hover {
   grid-template-columns: minmax(0, 1fr) 340px;
   gap: 3.5rem;
   align-items: start;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .reading-article {
+  width: 100%;
   max-width: 100%;
   min-width: 0;
+  box-sizing: border-box;
 }
 
 .content-block {
   margin-bottom: 3.5rem;
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
+  box-sizing: border-box;
 }
 
 .lead-paragraph {
@@ -1107,6 +1135,10 @@ a:hover {
   position: relative;
   padding-top: 2rem;
   border-top: 1px solid var(--bg-glass-border);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .chapter-number {
@@ -1121,7 +1153,7 @@ a:hover {
 
 .chapter-title {
   font-family: var(--font-serif-title);
-  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: var(--text-main);
@@ -1141,12 +1173,15 @@ a:hover {
 .quote-callout {
   display: flex;
   gap: 1.25rem;
-  padding: 1.6rem 1.85rem;
+  padding: 1.5rem 1.75rem;
   background: var(--bg-surface-elevated);
   border-radius: var(--radius-md);
   margin: 2rem 0;
   border-left: 4px solid var(--gold-primary);
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .quote-callout.danger-theme {
@@ -1189,7 +1224,10 @@ a:hover {
   margin: 1.75rem 0;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .scripture-card.gold-theme {
@@ -1202,6 +1240,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.85rem;
+  width: 100%;
 }
 
 .scripture-ref {
@@ -1248,14 +1287,17 @@ a:hover {
 /* Modern Parallel Card */
 .modern-parallel-card {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.25rem;
   padding: 1.25rem 1.5rem;
   background: var(--bg-surface-elevated);
   border-radius: var(--radius-md);
   border: 1px solid var(--bg-glass-border);
   margin: 1.75rem 0;
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .parallel-icon {
@@ -1266,6 +1308,11 @@ a:hover {
 
 [data-theme="dark"] .parallel-icon {
   color: #38bdf8;
+}
+
+.parallel-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .parallel-text h4 {
@@ -1286,6 +1333,10 @@ a:hover {
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
   margin: 2rem 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .split-card {
@@ -1293,7 +1344,10 @@ a:hover {
   border-radius: var(--radius-md);
   padding: 1.5rem;
   border: 1px solid var(--bg-glass-border);
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .split-badge {
@@ -1338,6 +1392,8 @@ a:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .comparison-table {
@@ -1384,7 +1440,10 @@ a:hover {
   padding: 2.2rem;
   margin: 3rem 0;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .myth-header {
@@ -1435,6 +1494,10 @@ a:hover {
 .conclusion-block {
   padding-top: 2rem;
   border-top: 2px solid var(--gold-primary);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .conclusion-badge {
@@ -1449,7 +1512,7 @@ a:hover {
 
 .conclusion-title {
   font-family: var(--font-serif-title);
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
   margin-bottom: 1.5rem;
   color: var(--text-main);
 }
@@ -1460,7 +1523,10 @@ a:hover {
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   padding: 1.4rem 1.8rem;
   margin: 2rem 0;
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .lead-callout {
@@ -1476,11 +1542,14 @@ a:hover {
   background: var(--bg-surface-elevated);
   border: 2px solid var(--gold-primary);
   border-radius: var(--radius-lg);
-  padding: 2.5rem;
+  padding: 2.5rem 2rem;
   text-align: center;
   margin: 2.5rem 0;
   box-shadow: 0 10px 35px rgba(245, 158, 11, 0.15);
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .final-decision-prompt h3 {
@@ -1494,7 +1563,7 @@ a:hover {
 
 .final-decision-prompt .prompt-text {
   font-family: var(--font-serif-body);
-  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+  font-size: clamp(1.25rem, 2.8vw, 1.8rem);
   font-style: italic;
   font-weight: 700;
   color: var(--text-main);
@@ -1509,7 +1578,10 @@ a:hover {
   margin-top: 2rem;
   text-align: center;
   border: 1px solid var(--bg-glass-border);
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .blessing-text {
@@ -1524,6 +1596,10 @@ a:hover {
    ========================================================================== */
 .study-sidebar {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .sticky-card {
@@ -1531,6 +1607,9 @@ a:hover {
   top: 80px;
   padding: 1.75rem;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sidebar-title {
@@ -1595,6 +1674,8 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .check-item {
@@ -1607,6 +1688,8 @@ a:hover {
   color: var(--text-soft);
   line-height: 1.45;
   padding: 0.25rem 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .check-item input {
@@ -1648,6 +1731,12 @@ a:hover {
   opacity: 0.85;
 }
 
+.chk-label {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+}
+
 .checklist-status {
   margin-top: 1rem;
   padding: 0.75rem;
@@ -1663,6 +1752,7 @@ a:hover {
 
 .sidebar-share-cta {
   text-align: center;
+  width: 100%;
 }
 
 .share-tagline {
@@ -1688,6 +1778,7 @@ a:hover {
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
   transition: all var(--transition-fast);
+  box-sizing: border-box;
 }
 
 .btn-whatsapp-full:hover {
@@ -1702,6 +1793,8 @@ a:hover {
 .prayer-section {
   padding: 4rem 0 6rem;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .prayer-card {
@@ -1712,6 +1805,8 @@ a:hover {
   border-color: var(--gold-primary);
   background: var(--bg-surface-elevated);
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .prayer-badge {
@@ -1728,14 +1823,14 @@ a:hover {
 
 .prayer-header h2 {
   font-family: var(--font-serif-title);
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
   margin-bottom: 1.75rem;
   color: var(--text-main);
 }
 
 .prayer-body p {
   font-family: var(--font-serif-body);
-  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
   line-height: 1.7;
   color: var(--text-main);
   max-width: 720px;
@@ -1747,11 +1842,13 @@ a:hover {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width: 100%;
 }
 
 .btn-amen-gold {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   background: linear-gradient(135deg, #f59e0b, #d97706);
   color: #090c13;
@@ -1764,6 +1861,7 @@ a:hover {
   cursor: pointer;
   box-shadow: 0 6px 25px rgba(245, 158, 11, 0.4);
   transition: all var(--transition-fast);
+  box-sizing: border-box;
 }
 
 .btn-amen-gold:hover {
@@ -1914,6 +2012,7 @@ a:hover {
   background: var(--bg-surface-elevated);
   text-align: center;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .footer-content {
@@ -1921,6 +2020,8 @@ a:hover {
   flex-direction: column;
   align-items: center;
   gap: 0.65rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footer-brand {
@@ -1952,20 +2053,104 @@ a:hover {
 }
 
 /* ==========================================================================
-   Comprehensive Mobile & Tablet Responsiveness (< 960px & < 640px)
+   Comprehensive Tablet & Mobile Viewport Rules (<= 960px, <= 768px, <= 640px)
    ========================================================================== */
+
 @media (max-width: 960px) {
   .read-layout {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
     gap: 2.5rem;
   }
 
   .sticky-card {
     position: static;
   }
+}
 
+@media (max-width: 768px) {
   .split-comparison-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Responsive Mobile Comparison Table: Converts Table Rows to Clean Vertical Stacked Cards */
+  .comparison-table-wrapper {
+    overflow: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .comparison-table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .comparison-table thead {
+    display: none;
+  }
+
+  .comparison-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .comparison-table tr {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--bg-glass-border);
+    border-radius: var(--radius-md);
+    padding: 1.15rem 1rem;
+    gap: 0.65rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .comparison-table td {
+    display: block;
+    padding: 0.35rem 0;
+    border: none;
+    font-size: 0.92rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    word-break: break-word;
+  }
+
+  .comparison-table td:nth-child(1) {
+    font-weight: 700;
+    color: var(--gold-light);
+    border-bottom: 1px solid var(--bg-glass-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .comparison-table td:nth-child(2)::before {
+    content: "❌ Isaque (Inércia): ";
+    font-weight: 700;
+    color: var(--accent-danger);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .comparison-table td:nth-child(3)::before {
+    content: "🛡️ Cristo (Intencionalidade): ";
+    font-weight: 700;
+    color: var(--gold-primary);
+    display: block;
+    margin-bottom: 0.2rem;
   }
 }
 
@@ -2023,8 +2208,8 @@ a:hover {
   }
 
   .hero-glow {
-    width: 260px;
-    height: 260px;
+    width: 240px;
+    height: 240px;
   }
 
   .hero-title {
@@ -2113,83 +2298,159 @@ a:hover {
     gap: 0.75rem;
   }
 
-  /* Responsive Mobile Comparison Table: Converts Table Rows to Clean Vertical Stacked Cards */
-  .comparison-table-wrapper {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0;
+  /* Reading Section on Mobile */
+  .reading-section {
+    padding: 2rem 0 3.5rem;
   }
 
-  .comparison-table {
-    display: block;
-    min-width: 100%;
-    width: 100%;
+  .content-block {
+    margin-bottom: 2.5rem;
   }
 
-  .comparison-table thead {
-    display: none;
+  .lead-paragraph {
+    font-size: 1.08rem;
+    line-height: 1.7;
   }
 
-  .comparison-table tbody {
-    display: flex;
+  .chapter-title {
+    font-size: 1.45rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .chapter-number {
+    font-size: 1.75rem;
+  }
+
+  .subsection-title {
+    font-size: 1.25rem;
+  }
+
+  .quote-callout {
+    padding: 1.15rem 1rem;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .callout-icon {
+    font-size: 1.3rem;
+  }
+
+  .callout-text {
+    font-size: 1.05rem;
+  }
+
+  .scripture-card {
+    padding: 1.15rem 1rem;
+    margin: 1.25rem 0;
+  }
+
+  .scripture-body {
+    font-size: 1.05rem;
+  }
+
+  .modern-parallel-card {
     flex-direction: column;
-    gap: 1rem;
-    width: 100%;
+    padding: 1.15rem 1rem;
+    gap: 0.65rem;
   }
 
-  .comparison-table tr {
-    display: flex;
-    flex-direction: column;
-    background: var(--bg-surface-elevated);
-    border: 1px solid var(--bg-glass-border);
-    border-radius: var(--radius-md);
-    padding: 1rem;
-    gap: 0.5rem;
+  .split-card {
+    padding: 1.15rem 1rem;
   }
 
-  .comparison-table td {
-    display: block;
-    padding: 0.35rem 0;
-    border: none;
+  .myth-highlight-box {
+    padding: 1.25rem 1rem;
+    margin: 2rem 0;
+  }
+
+  .myth-header {
+    gap: 0.75rem;
+  }
+
+  .myth-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+
+  .myth-header h3 {
+    font-size: 1.15rem;
+  }
+
+  .myth-punchline {
+    font-size: 1rem;
+  }
+
+  .callout-card-strong {
+    padding: 1.15rem 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .lead-callout {
+    font-size: 1.05rem;
+  }
+
+  .final-decision-prompt {
+    padding: 1.5rem 1rem;
+    margin: 1.75rem 0;
+  }
+
+  .final-decision-prompt h3 {
+    font-size: 1rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .final-decision-prompt .prompt-text {
+    font-size: 1.15rem;
+    line-height: 1.45;
+  }
+
+  .blessing-box {
+    padding: 1rem 0.85rem;
+  }
+
+  .blessing-text {
+    font-size: 0.98rem;
+  }
+
+  /* Sidebar card */
+  .sticky-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .check-item {
     font-size: 0.88rem;
   }
 
-  .comparison-table td:nth-child(1) {
-    font-weight: 700;
-    color: var(--gold-light);
-    border-bottom: 1px solid var(--bg-glass-border);
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.25rem;
-    font-size: 0.95rem;
-  }
-
-  .comparison-table td:nth-child(2)::before {
-    content: "❌ Isaque (Inércia): ";
-    font-weight: 700;
-    color: var(--accent-danger);
-    display: block;
-    margin-bottom: 0.15rem;
-  }
-
-  .comparison-table td:nth-child(3)::before {
-    content: "🛡️ Cristo (Intencionalidade): ";
-    font-weight: 700;
-    color: var(--gold-primary);
-    display: block;
-    margin-bottom: 0.15rem;
-  }
-
   /* Prayer section */
+  .prayer-section {
+    padding: 2.5rem 0 4rem;
+  }
+
   .prayer-card {
     padding: 1.75rem 1rem;
+  }
+
+  .prayer-header h2 {
+    font-size: 1.35rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .prayer-body p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
   }
 
   .btn-amen-gold {
     width: 100%;
     justify-content: center;
     font-size: 0.95rem;
-    padding: 0.85rem 1.25rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .amen-count-text {
+    font-size: 0.85rem;
   }
 
   /* Toast */
@@ -2197,6 +2458,23 @@ a:hover {
     width: 90%;
     text-align: center;
     justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 2rem 0;
+  }
+
+  .footer-brand {
+    font-size: 0.9rem;
+  }
+
+  .footer-author {
+    font-size: 0.88rem;
+  }
+
+  .footer-copy {
     font-size: 0.85rem;
   }
 }
