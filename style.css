@@ -247,13 +247,17 @@ a:hover {
   box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
 }
 
+.brand-mobile-br {
+  display: none;
+}
+
 .brand-title {
   font-family: var(--font-serif-title);
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   color: var(--text-main);
-  white-space: nowrap;
+  line-height: 1.2;
 }
 
 .header-actions {
@@ -2171,11 +2175,18 @@ a:hover {
     gap: 0.35rem;
   }
 
+  .brand-mobile-br {
+    display: inline;
+  }
+
   .brand-title {
-    font-size: 0.85rem;
-    max-width: 120px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 0.82rem;
+    line-height: 1.15;
+    max-width: none;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    font-weight: 700;
   }
 
   .brand-badge {

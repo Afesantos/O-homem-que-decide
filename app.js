@@ -211,21 +211,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   updateChecklistStatus();
 
-  // 9. Prayer / Amen Counter (Initialized from Zero)
+  // 9. Prayer / Amen Counter (Reset to Zero)
   const btnAmen = document.getElementById('btn-amen');
-  const amenCountEl = document.getElementById('amen-count');
   const amenDisplay = document.getElementById('amen-counter-display');
   
-  // Clean any legacy count > 10 that might have been 47
-  let storedCount = localStorage.getItem('homem_amen_count');
-  if (storedCount === '47') {
-    localStorage.removeItem('homem_amen_count');
-    localStorage.removeItem('homem_agreed');
-    storedCount = null;
-  }
+  // Unconditionally clear legacy or test counter on user request
+  localStorage.removeItem('homem_amen_count');
+  localStorage.removeItem('homem_agreed');
 
-  let count = parseInt(storedCount || '0', 10);
-  let hasAgreed = localStorage.getItem('homem_agreed') === 'true';
+  let count = 0;
+  let hasAgreed = false;
 
   function renderAmenCount(val) {
     if (!amenDisplay) return;
@@ -240,12 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderAmenCount(count);
 
-  if (hasAgreed && btnAmen) {
-    btnAmen.classList.add('clicked');
-    btnAmen.innerHTML = '<i class="fa-solid fa-check-double"></i> Decisão Gravada em Oração';
-  }
-
   if (btnAmen) {
+    btnAmen.classList.remove('clicked');
+    btnAmen.innerHTML = '<i class="fa-solid fa-heart"></i> Dizer Amém & Gravar Decisão';
+
     btnAmen.addEventListener('click', () => {
       if (!hasAgreed) {
         hasAgreed = true;
