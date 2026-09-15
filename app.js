@@ -137,13 +137,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 6. WhatsApp Share Integration
   function shareViaWhatsApp() {
-    const title = "*O Homem que Decide: Vencendo a Passividade e o Piloto Automático*";
-    const author = "_por Roque Filho • Setembro/2026_";
-    const highlight = "Não decidir já é uma decisão. Quando nos omitimos diante de um assunto, a falta de escolha define o desfecho por nós.\n\nReflexão imperdível para homens sobre a omissão de Isaque e o exemplo supremo de Jesus Cristo como líder e protetor.";
-    const url = window.location.href;
-    const message = `${title}\n${author}\n\n${highlight}\n\n👉 Acesse e leia: ${url}`;
-    
-    const shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+    const lines = [
+      "🛡️ *O Homem que Decide: Vencendo a Passividade e o Piloto Automático*",
+      "✍️ _por Roque Filho • Setembro/2026_",
+      "",
+      "\"Não decidir já é uma decisão. Quando nos omitimos diante de um assunto, a falta de escolha define o desfecho por nós.\"",
+      "",
+      "Reflexão imperdível para homens sobre a omissão de Isaque e o exemplo supremo de Jesus Cristo como líder e protetor da família.",
+      "",
+      "👉 Acesse a reflexão completa:"
+    ];
+
+    if (window.location.href && !window.location.href.startsWith('file:')) {
+      lines.push(window.location.href);
+    }
+
+    const fullMessage = lines.join('\n');
+    const shareUrl = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(fullMessage);
     window.open(shareUrl, '_blank');
   }
 
@@ -201,13 +211,35 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   updateChecklistStatus();
 
-  // 9. Prayer / Amen Counter
+  // 9. Prayer / Amen Counter (Initialized from Zero)
   const btnAmen = document.getElementById('btn-amen');
   const amenCountEl = document.getElementById('amen-count');
-  let count = parseInt(localStorage.getItem('homem_amen_count') || '47', 10);
+  const amenDisplay = document.getElementById('amen-counter-display');
+  
+  // Clean any legacy count > 10 that might have been 47
+  let storedCount = localStorage.getItem('homem_amen_count');
+  if (storedCount === '47') {
+    localStorage.removeItem('homem_amen_count');
+    localStorage.removeItem('homem_agreed');
+    storedCount = null;
+  }
+
+  let count = parseInt(storedCount || '0', 10);
   let hasAgreed = localStorage.getItem('homem_agreed') === 'true';
 
-  if (amenCountEl) amenCountEl.textContent = count;
+  function renderAmenCount(val) {
+    if (!amenDisplay) return;
+    if (val === 0) {
+      amenDisplay.innerHTML = '<i class="fa-solid fa-users"></i> <strong id="amen-count">0</strong> homens confirmaram ainda. Seja o primeiro!';
+    } else if (val === 1) {
+      amenDisplay.innerHTML = '<i class="fa-solid fa-users"></i> <strong id="amen-count">1</strong> homem já confirmou esta decisão hoje';
+    } else {
+      amenDisplay.innerHTML = `<i class="fa-solid fa-users"></i> <strong id="amen-count">${val}</strong> homens já confirmaram esta decisão hoje`;
+    }
+  }
+
+  renderAmenCount(count);
+
   if (hasAgreed && btnAmen) {
     btnAmen.classList.add('clicked');
     btnAmen.innerHTML = '<i class="fa-solid fa-check-double"></i> Decisão Gravada em Oração';
@@ -220,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         count += 1;
         localStorage.setItem('homem_amen_count', count.toString());
         localStorage.setItem('homem_agreed', 'true');
-        if (amenCountEl) amenCountEl.textContent = count;
+        renderAmenCount(count);
         btnAmen.classList.add('clicked');
         btnAmen.innerHTML = '<i class="fa-solid fa-check-double"></i> Decisão Gravada em Oração';
         showToast('Amém! Sua decisão foi confirmada diante de Deus.', 'fa-solid fa-hands-praying');
